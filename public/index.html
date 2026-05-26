@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biblioteca</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="toolbar">
+        <div>
+          <p class="eyebrow">API Livros</p>
+          <h1>Biblioteca</h1>
+        </div>
+        <button class="ghost-button" id="refreshButton" type="button">Atualizar</button>
+      </section>
+
+      <section class="layout">
+        <form class="panel form-panel" id="bookForm">
+          <input type="hidden" id="bookId" />
+          <div class="panel-heading">
+            <h2 id="formTitle">Novo livro</h2>
+            <button class="link-button hidden" id="cancelEditButton" type="button">Cancelar</button>
+          </div>
+
+          <label>
+            Titulo
+            <input id="title" name="title" type="text" maxlength="255" required />
+          </label>
+
+          <label>
+            Autor
+            <input id="author" name="author" type="text" maxlength="255" required />
+          </label>
+
+          <label>
+            Descricao
+            <textarea id="description" name="description" rows="6" required></textarea>
+          </label>
+
+          <div class="status-grid">
+            <label class="check-row">
+              <input id="isFavorite" name="isFavorite" type="checkbox" />
+              Favorito
+            </label>
+            <label class="check-row">
+              <input id="isReading" name="isReading" type="checkbox" />
+              Lendo
+            </label>
+            <label class="check-row">
+              <input id="isFinished" name="isFinished" type="checkbox" />
+              Finalizado
+            </label>
+          </div>
+
+          <button class="primary-button" id="submitButton" type="submit">Salvar livro</button>
+          <p class="message" id="formMessage" role="status"></p>
+        </form>
+
+        <section class="panel list-panel">
+          <div class="panel-heading">
+            <h2>Livros cadastrados</h2>
+            <span class="counter" id="bookCounter">0</span>
+          </div>
+          <div class="book-list" id="bookList"></div>
+          <p class="empty-state hidden" id="emptyState">Nenhum livro cadastrado ainda.</p>
+        </section>
+      </section>
+    </main>
+
+    <template id="bookTemplate">
+      <article class="book-card">
+        <div class="book-content">
+          <div>
+            <h3 class="book-title"></h3>
+            <p class="book-author"></p>
+          </div>
+          <p class="book-description"></p>
+          <div class="badges"></div>
+        </div>
+        <div class="card-actions">
+          <button class="secondary-button edit-button" type="button">Editar</button>
+          <button class="danger-button delete-button" type="button">Excluir</button>
+        </div>
+      </article>
+    </template>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
